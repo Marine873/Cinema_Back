@@ -53,10 +53,11 @@ public class SeanceRestController {
 	}
 	
 	// afficher la liste des séances pour une date (YYYY-MM-DD)
-	@GetMapping("/date/{date}")
-	public List<Seance> getSeanceByDate(@PathVariable("date") LocalDate date) {
-		return seanceService.getSeanceByDate(date);
-	}
+		@GetMapping("/date/{date}")
+		public List<Seance> getSeanceByDate(@PathVariable("date") String dateX) {
+			LocalDate date = LocalDate.parse(dateX);
+			return seanceService.getSeanceByDate(date);
+		}
 	
 	// afficher la liste des séances pour une heure (HH-MM-SS)
 	@GetMapping("/heure/{heure}")
